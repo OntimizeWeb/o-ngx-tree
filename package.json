@@ -4,10 +4,7 @@
   "description": "Angular component for visualizing data that can be naturally represented as a tree. Forked from valor-software/ng2-tree",
   "main": "index.js",
   "license": "MIT",
-  "author": {
-    "name": "Georgii Rychko",
-    "email": "rychko.georgiy@gmail.com"
-  },
+  "author": "Imatia S.L.",
   "homepage": "https://github.com/OntimizeWeb/ngx-tree",
   "repository": {
     "type": "git",
