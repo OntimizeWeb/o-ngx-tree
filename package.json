@@ -1,24 +1,24 @@
 {
-  "name": "ngx-tree",
+  "name": "o-ngx-tree",
   "version": "4.0.0",
   "description": "Angular component for visualizing data that can be naturally represented as a tree. Forked from valor-software/ng2-tree",
   "main": "index.js",
   "license": "MIT",
   "author": "Imatia S.L.",
-  "homepage": "https://github.com/OntimizeWeb/ngx-tree",
+  "homepage": "https://github.com/OntimizeWeb/o-ngx-tree",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OntimizeWeb/ngx-tree.git"
+    "url": "git+https://github.com/OntimizeWeb/o-ngx-tree.git"
   },
   "bugs": {
-    "url": "https://github.com/OntimizeWeb/ngx-tree/issues"
+    "url": "https://github.com/OntimizeWeb/o-ngx-tree/issues"
   },
   "keywords": [
     "tree",
     "ng2",
     "angular",
     "ng2-tree",
-    "ngx-tree",
+    "o-ngx-tree",
     "branch",
     "tree-view",
     "branchy",
@@ -35,7 +35,7 @@
     "test": "ng test --watch false",
     "test:w": "ng test --watch",
     "test:cov": "ng test --watch false --code-coverage",
-    "lint": "ng lint ngx-tree --type-check",
+    "lint": "ng lint o-ngx-tree --type-check",
     "e2e": "ng e2e",
     "changelog": "conventional-changelog -i CHANGELOG.md -s -p angular",
     "github-release": "conventional-github-releaser -p angular",

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-tree": {
+    "o-ngx-tree": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -53,18 +53,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-tree:build"
+            "browserTarget": "o-ngx-tree:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-tree:build:production"
+              "browserTarget": "o-ngx-tree:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-tree:build"
+            "browserTarget": "o-ngx-tree:build"
           }
         },
         "test": {
@@ -101,7 +101,7 @@
         }
       }
     },
-    "ngx-tree-e2e": {
+    "o-ngx-tree-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -110,7 +110,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "ngx-tree:serve"
+            "devServerTarget": "o-ngx-tree:serve"
           }
         },
         "lint": {
@@ -125,7 +125,7 @@
       }
     }
   },
-  "defaultProject": "ngx-tree",
+  "defaultProject": "o-ngx-tree",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
