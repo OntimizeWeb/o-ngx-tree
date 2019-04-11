@@ -47,8 +47,6 @@
     "webdriver-update": "node ./node_modules/protractor/bin/webdriver-manager update",
     "precommit": "pretty-quick --staged",
     "prettier": "prettier --write '{.,src,test}/**/*.ts'",
-
-    "pack" : "npm run build && cd dist && npm pack && cd..",
     "clean": "rimraf coverage build dist dist-demo bundles factories .publish",
     "compile": "ngc -p tsconfig-aot.json && node umd-bundler.js",
     "copy": "copyfiles -f src/styles.css README.md package.json dist && copyfiles media/** dist",
