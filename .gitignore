@@ -1,0 +1,16 @@
+.idea
+.vscode
+.publish
+dist
+dist-demo
+build
+coverage
+bundles
+factories
+node_modules
+
+.DS_Store
+*.swp
+npm-debug.log
+yarn-error.log
+package-lock.json
