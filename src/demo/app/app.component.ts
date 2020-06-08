@@ -274,7 +274,8 @@ export class AppComponent implements OnInit {
     ]
   };
 
-  @ViewChild('treeFonts') public treeFonts;
+  @ViewChild('treeFonts', { static: false })
+  public treeFonts;
 
   public pls: TreeModel;
 
@@ -503,7 +504,8 @@ export class AppComponent implements OnInit {
   };
   private lastFFSNodeId = 86;
 
-  @ViewChild('treeFFS') public treeFFS;
+  @ViewChild('treeFFS', { static: false })
+  public treeFFS;
 
   public icons: TreeModel = {
     value: 'Icons',
