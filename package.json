@@ -1,6 +1,6 @@
 {
   "name": "o-ngx-tree",
-  "version": "8.0.0-rc.0",
+  "version": "8.0.0",
   "description":
     "Angular component for visualizing data that can be naturally represented as a tree. Forked from valor-software/ng2-tree",
   "main": "index.js",
