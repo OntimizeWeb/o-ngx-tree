@@ -11,7 +11,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { filter, merge } from 'rxjs/operators';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { NodeDraggableEvent } from './draggable/draggable.events';
 import { NodeEditableEvent, NodeEditableEventAction } from './editable/editable.events';
 import { NodeMenuItemAction, NodeMenuItemSelectedEvent } from './menu/menu.events';
@@ -103,7 +103,8 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
   public isReadOnly = false;
   public controller: TreeController;
 
-  @ViewChild('checkbox') public checkboxElementRef: ElementRef;
+  @ViewChild('checkbox', { static: false })
+  public checkboxElementRef: ElementRef;
 
   private subscriptions: Subscription[] = [];
 
@@ -111,8 +112,7 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
     private nodeMenuService: NodeMenuService,
     public treeService: TreeService,
     public nodeElementRef: ElementRef
-  ) {
-  }
+  ) {}
 
   public ngAfterViewInit(): void {
     if (this.tree.checked && !(this.tree as any).firstCheckedFired) {
@@ -157,10 +157,12 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy, Afte
     );
 
     this.subscriptions.push(
-      this.treeService.nodeChecked$.pipe(
-        merge(this.treeService.nodeUnchecked$),
-        filter((e: NodeCheckedEvent) => this.eventContainsId(e) && this.tree.hasChild(e.node))
-      ).subscribe((e: NodeCheckedEvent) => this.updateCheckboxState())
+      this.treeService.nodeChecked$
+        .pipe(
+          merge(this.treeService.nodeUnchecked$),
+          filter((e: NodeCheckedEvent) => this.eventContainsId(e) && this.tree.hasChild(e.node))
+        )
+        .subscribe((e: NodeCheckedEvent) => this.updateCheckboxState())
     );
   }
 
