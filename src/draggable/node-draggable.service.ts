@@ -1,9 +1,12 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+
 import { CapturedNode } from './captured-node';
 import { NodeDraggableEvent } from './draggable.events';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NodeDraggableService {
   public draggableNodeEvents$: Subject<NodeDraggableEvent> = new Subject<NodeDraggableEvent>();
 
