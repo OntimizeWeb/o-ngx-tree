@@ -1,4 +1,15 @@
-import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild,
+  Injector
+} from '@angular/core';
 import { NodeMenuService } from './node-menu.service';
 import { NodeMenuAction, NodeMenuItemAction, NodeMenuItemSelectedEvent } from './menu.events';
 import { isEscapePressed, isLeftButtonClicked } from '../utils/event.utils';
@@ -51,10 +62,11 @@ export class NodeMenuComponent implements OnInit, OnDestroy {
 
   private disposersForGlobalListeners: Function[] = [];
 
-  public constructor(
-    @Inject(Renderer2) private renderer: Renderer2,
-    @Inject(NodeMenuService) private nodeMenuService: NodeMenuService
-  ) {}
+  private nodeMenuService: NodeMenuService;
+
+  public constructor(protected injector: Injector, @Inject(Renderer2) private renderer: Renderer2) {
+    this.nodeMenuService = this.injector.get(NodeMenuService);
+  }
 
   public ngOnInit(): void {
     this.availableMenuItems = this.menuItems || this.availableMenuItems;

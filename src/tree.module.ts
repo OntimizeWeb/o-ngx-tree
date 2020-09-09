@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { TreeComponent } from './tree.component';
-import { TreeInternalComponent } from './tree-internal.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
 import { NodeDraggableDirective } from './draggable/node-draggable.directive';
-import { NodeDraggableService } from './draggable/node-draggable.service';
 import { NodeEditableDirective } from './editable/node-editable.directive';
 import { NodeMenuComponent } from './menu/node-menu.component';
-import { NodeMenuService } from './menu/node-menu.service';
-import { TreeService } from './tree.service';
+import { TreeInternalComponent } from './tree-internal.component';
+import { TreeComponent } from './tree.component';
 import { SafeHtmlPipe } from './utils/safe-html.pipe';
 
 @NgModule({
@@ -20,7 +18,6 @@ import { SafeHtmlPipe } from './utils/safe-html.pipe';
     TreeInternalComponent,
     SafeHtmlPipe
   ],
-  exports: [TreeComponent],
-  providers: [NodeDraggableService, NodeMenuService, TreeService]
+  exports: [TreeComponent]
 })
 export class TreeModule {}

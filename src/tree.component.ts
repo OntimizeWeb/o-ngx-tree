@@ -2,7 +2,6 @@ import {
   Component,
   ContentChild,
   EventEmitter,
-  Inject,
   Input,
   OnChanges,
   OnDestroy,
@@ -10,7 +9,8 @@ import {
   Output,
   SimpleChanges,
   TemplateRef,
-  ViewChild
+  ViewChild,
+  Injector
 } from '@angular/core';
 import { TreeService } from './tree.service';
 import * as TreeTypes from './tree.types';
@@ -69,7 +69,11 @@ export class TreeComponent implements OnInit, OnChanges, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  public constructor(@Inject(TreeService) private treeService: TreeService) {}
+  private treeService: TreeService;
+
+  public constructor(protected injector: Injector) {
+    this.treeService = this.injector.get(TreeService);
+  }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (!this.treeModel) {

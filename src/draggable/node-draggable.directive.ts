@@ -1,7 +1,8 @@
-import { Directive, ElementRef, Inject, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { NodeDraggableService } from './node-draggable.service';
-import { CapturedNode } from './captured-node';
+import { Directive, ElementRef, Inject, Injector, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+
 import { Tree } from '../tree';
+import { CapturedNode } from './captured-node';
+import { NodeDraggableService } from './node-draggable.service';
 
 @Directive({
   selector: '[nodeDraggable]'
@@ -16,12 +17,16 @@ export class NodeDraggableDirective implements OnDestroy, OnInit {
   private nodeNativeElement: HTMLElement;
   private disposersForDragListeners: Function[] = [];
 
+  private nodeDraggableService: NodeDraggableService;
+
   public constructor(
+    protected injector: Injector,
     @Inject(ElementRef) public element: ElementRef,
-    @Inject(NodeDraggableService) private nodeDraggableService: NodeDraggableService,
     @Inject(Renderer2) private renderer: Renderer2
   ) {
     this.nodeNativeElement = element.nativeElement;
+
+    this.nodeDraggableService = this.injector.get(NodeDraggableService);
   }
 
   public ngOnInit(): void {

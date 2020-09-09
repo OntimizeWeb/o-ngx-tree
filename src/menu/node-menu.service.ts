@@ -1,9 +1,12 @@
 import { ElementRef, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
+
 import { NodeMenuAction, NodeMenuEvent } from './menu.events';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NodeMenuService {
   public nodeMenuEvents$: Subject<NodeMenuEvent> = new Subject<NodeMenuEvent>();
 

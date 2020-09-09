@@ -1,6 +1,7 @@
-import { ElementRef, Inject, Injectable } from '@angular/core';
+import { ElementRef, Injectable, Injector } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
+
 import { NodeDraggableEvent } from './draggable/draggable.events';
 import { NodeDraggableService } from './draggable/node-draggable.service';
 import { Tree } from './tree';
@@ -23,7 +24,9 @@ import {
 import { RenamableNode } from './tree.types';
 import { isEmpty } from './utils/fn.utils';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TreeService {
   public nodeMoved$: Subject<NodeMovedEvent> = new Subject<NodeMovedEvent>();
   public nodeRemoved$: Subject<NodeRemovedEvent> = new Subject<NodeRemovedEvent>();
@@ -41,14 +44,15 @@ export class TreeService {
 
   private controllers: Map<string | number, TreeController> = new Map();
 
-  public constructor(@Inject(NodeDraggableService) private nodeDraggableService: NodeDraggableService) {
+  private nodeDraggableService: NodeDraggableService;
+
+  public constructor(protected injector: Injector) {
     this.nodeRemoved$.subscribe((e: NodeRemovedEvent) => e.node.removeItselfFromParent());
+    this.nodeDraggableService = this.injector.get(NodeDraggableService);
   }
 
   public unselectStream(tree: Tree): Observable<NodeSelectedEvent> {
-    return this.nodeSelected$.pipe(
-      filter((e: NodeSelectedEvent) => tree !== e.node)
-    );
+    return this.nodeSelected$.pipe(filter((e: NodeSelectedEvent) => tree !== e.node));
   }
 
   public fireNodeRemoved(tree: Tree): void {
